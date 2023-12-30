@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app"
+import { ClerkProvider } from "@clerk/nextjs"
 
 import Layout from "@/components/layout"
 
@@ -19,9 +20,11 @@ export default function App({ Component, pageProps }: AppProps) {
           --font-sans: ${fontSans.style.fontFamily};
         }
       `}</style>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <ClerkProvider {...pageProps}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ClerkProvider>
     </>
   )
 }
