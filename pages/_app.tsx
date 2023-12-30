@@ -4,7 +4,7 @@ import Layout from "@/components/layout"
 
 import "@/styles/globals.css"
 
-import { Inter as FontSans } from "next/font/google"
+import { Jost as FontSans } from "next/font/google"
 
 export const fontSans = FontSans({
   subsets: ["latin"],

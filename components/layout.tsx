@@ -1,7 +1,6 @@
-import { cn } from "@/lib/utils"
+import React from "react"
 
-import Footer from "./footer"
-import Navbar from "./navbar"
+import { cn } from "@/lib/utils"
 
 type TLayout = {
   children: React.ReactNode
@@ -10,11 +9,14 @@ type TLayout = {
 export default function Layout({ children }: TLayout) {
   return (
     <>
-      <Navbar className={cn("font-sans")} />
-      <main className={cn("min-h-screen bg-background font-sans antialiased")}>
-        {children}
+      <main
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased grid grid-cols-12"
+        )}
+      >
+        <aside className="col-span-2">Salut</aside>
+        <div className="col-span-10">{children}</div>
       </main>
-      <Footer className={cn("font-sans")} />
     </>
   )
 }
