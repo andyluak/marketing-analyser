@@ -14,8 +14,8 @@ export default function Layout({ children }: TLayout) {
           "min-h-screen bg-background font-sans antialiased grid grid-cols-12"
         )}
       >
-        <aside className="col-span-2">Salut</aside>
-        <div className="col-span-10">{children}</div>
+        <aside className="col-span-2 bg-primary text-white">Salut</aside>
+        <div className="col-span-10 p-8">{children}</div>
       </main>
     </>
   )

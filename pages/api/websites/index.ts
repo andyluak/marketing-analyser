@@ -13,14 +13,13 @@ export default async function handler(
     return
   }
 
-  const usersResponse = await dbClient.getUser(userId)
+  const userData = await dbClient.getUser(userId)
 
-  if (usersResponse.length > 0) {
-    res.status(200).json({})
-    return
+  if (req.method === "GET") {
+    const usersResponse = await dbClient.getWebsitesData(userData[0].id)
+
+    res.status(200).json(usersResponse)
   }
-
-  await dbClient.addUser(userId)
 
   res.status(200).json({})
 }

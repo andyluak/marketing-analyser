@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 const { fontFamily } = require("tailwindcss/defaultTheme")
+const colors = require("tailwindcss/colors")
 
 module.exports = {
   darkMode: ["class"],
@@ -9,6 +10,7 @@ module.exports = {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
+    "./views/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -30,8 +32,8 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          ...colors.indigo,
+          DEFAULT: colors.indigo["400"],
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -76,6 +78,10 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      // add shadows
+      boxShadow: {
+        brutal: "0 10px 15px -3px rgb(0 0 0 / 0.1), 4px 5px 1px 1px black;",
       },
     },
   },

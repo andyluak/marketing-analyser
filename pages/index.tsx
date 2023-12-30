@@ -1,8 +1,15 @@
 import { GetServerSideProps } from "next"
+import Websites from "@/views/websites"
+import { useUser } from "@clerk/nextjs"
 import { buildClerkProps, getAuth } from "@clerk/nextjs/server"
 
 export default function Home() {
-  return <section>Start Building</section>
+  const { user } = useUser()
+  if (user) {
+    return <Websites userId={user.id} />
+  }
+
+  return null
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
