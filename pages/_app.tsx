@@ -1,5 +1,6 @@
 import type { AppProps } from "next/app"
 import { ClerkProvider } from "@clerk/nextjs"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 import Layout from "@/components/layout"
 
@@ -12,6 +13,8 @@ export const fontSans = FontSans({
   variable: "--font-sans",
 })
 
+const queryClient = new QueryClient()
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -21,9 +24,11 @@ export default function App({ Component, pageProps }: AppProps) {
         }
       `}</style>
       <ClerkProvider {...pageProps}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <QueryClientProvider client={queryClient}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </QueryClientProvider>
       </ClerkProvider>
     </>
   )
